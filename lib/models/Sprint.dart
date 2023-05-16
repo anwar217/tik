@@ -1,6 +1,7 @@
 import 'package:suiviprojet/models/Tache.dart';
 
 class Sprint {
+  int id;
   String nom;
   DateTime dateDebut;
   DateTime dateFin;
@@ -9,6 +10,7 @@ class Sprint {
   List<Tache> tasks;
 
   Sprint({
+    required this.id,
     required this.nom,
     required this.dateDebut,
     required this.dateFin,
@@ -18,30 +20,26 @@ class Sprint {
   });
 
   factory Sprint.fromJson(Map<String, dynamic> json) {
-    List<dynamic> tasksJson = json['tasks'];
-
-    List<Tache> tasks = tasksJson.map((task) => Tache.fromJson(task)).toList();
-
     return Sprint(
+      id: json['id'],
       nom: json['nom'],
-      dateDebut: DateTime.parse(json['datedebut']),
-      dateFin: DateTime.parse(json['datefin']),
+      dateDebut: DateTime.parse(json['dateDebut']),
+      dateFin: DateTime.parse(json['dateFin']),
       description: json['description'],
       status: json['status'],
-      tasks: tasks,
+      tasks: List<Tache>.from(json['tasks'].map((task) => Tache.fromJson(task))),
     );
   }
 
   Map<String, dynamic> toJson() {
-    List<Map<String, dynamic>> tasksJson = tasks.map((task) => task.toJson()).toList();
-
     return {
+      'id': id,
       'nom': nom,
-      'datedebut': dateDebut.toIso8601String(),
-      'datefin': dateFin.toIso8601String(),
+      'dateDebut': dateDebut.toIso8601String(),
+      'dateFin': dateFin.toIso8601String(),
       'description': description,
       'status': status,
-      'tasks': tasksJson,
+      'tasks': tasks.map((task) => task.toJson()).toList(),
     };
   }
 }

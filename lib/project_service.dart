@@ -4,7 +4,7 @@ import 'package:suiviprojet/models/Project.dart';
 import 'package:suiviprojet/models/Sprint.dart';
 
 class ProjectService {
-  static const API_URL = 'http://localhost:3000/projets';
+  static const API_URL = 'http://localhost:3000/projects';
 
   
   Future<List<Project>> fetchProjects() async {
