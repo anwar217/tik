@@ -3,8 +3,8 @@ import 'package:suiviprojet/models/Tache.dart';
 class Sprint {
   int id;
   String nom;
-  DateTime dateDebut;
-  DateTime dateFin;
+  DateTime datedebut;
+  DateTime datefin;
   String description;
   String status;
   List<Tache> tasks;
@@ -12,8 +12,8 @@ class Sprint {
   Sprint({
     required this.id,
     required this.nom,
-    required this.dateDebut,
-    required this.dateFin,
+    required this.datedebut,
+    required this.datefin,
     required this.description,
     required this.status,
     required this.tasks,
@@ -23,8 +23,8 @@ class Sprint {
     return Sprint(
       id: json['id'],
       nom: json['nom'],
-      dateDebut: DateTime.parse(json['dateDebut']),
-      dateFin: DateTime.parse(json['dateFin']),
+      datedebut: DateTime.parse(json['datedebut']),
+      datefin: DateTime.parse(json['datefin']),
       description: json['description'],
       status: json['status'],
       tasks: List<Tache>.from(json['tasks'].map((task) => Tache.fromJson(task))),
@@ -35,8 +35,8 @@ class Sprint {
     return {
       'id': id,
       'nom': nom,
-      'dateDebut': dateDebut.toIso8601String(),
-      'dateFin': dateFin.toIso8601String(),
+      'datedebut': datedebut.toIso8601String(),
+      'datefin': datefin.toIso8601String(),
       'description': description,
       'status': status,
       'tasks': tasks.map((task) => task.toJson()).toList(),

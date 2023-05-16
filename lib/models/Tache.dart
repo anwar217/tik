@@ -12,7 +12,10 @@ class Tache {
   });
 
   factory Tache.fromJson(Map<String, dynamic> json) {
-    Membre? membre = json['membre'] != null ? Membre.fromJson(json['membre']) : null;
+    Membre? membre;
+    if (json['membre'] != null) {
+      membre = Membre.fromJson(json['membre']);
+    }
 
     return Tache(
       membre: membre,
