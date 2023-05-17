@@ -40,6 +40,4 @@ factory Project.fromJson(Map<String, dynamic> json) {
     tasks: tasks,
   );
 }
-
- 
 }
